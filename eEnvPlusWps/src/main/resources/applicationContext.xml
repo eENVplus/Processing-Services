@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="topologicalValidation" class="it.sinergis.wps.TopologicalValidation">
+		<constructor-arg index="0" ref="catalog" />
+	</bean>
+	<bean id="featureUnion" class="it.sinergis.wps.FeatureUnion">
+		<constructor-arg index="0" ref="catalog" />
+	</bean>
+	<bean id="importShape" class="it.sinergis.wps.ImportShape">
+		<constructor-arg index="0" ref="catalog" />
+	</bean>
+    <bean id="topologicalValidationShp" class="it.sinergis.wps.TopologicalValidationShp">
+    	<constructor-arg index="0" ref="catalog" />
+	</bean>
+	<bean id="urbanRuralGrowthIdentification" class="it.sinergis.wps.UrbanRuralGrowthIdentification">
+    	<constructor-arg index="0" ref="catalog" />
+	</bean>
+	
+	<bean id="createReclassificationTable" class="it.sinergis.wps.EP09.CreateReclassificationTable">
+    	<constructor-arg index="0" ref="catalog" />
+	</bean>
+	
+	<bean id="computeLandslideSusceptibilityMap" class="it.sinergis.wps.EP09.ComputeLandslideSusceptibilityMap">
+    	<constructor-arg index="0" ref="catalog" />
+	</bean>
+	
+</beans>

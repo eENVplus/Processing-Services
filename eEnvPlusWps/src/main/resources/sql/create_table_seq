@@ -1,0 +1,3 @@
+grant all on public.spatial_ref_sys to envplus;
+GRANT SELECT ON public.geometry_columns TO envplus
+GRANT SELECT ON public.geography_columns TO envplus
