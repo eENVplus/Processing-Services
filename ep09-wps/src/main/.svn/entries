@@ -1,34 +1,0 @@
-10
-
-dir
-946
-https://srv11svn/vsvn/sinergis_apps/eenvplus/trunk/EP_09/ep09-wps/src/main
-https://srv11svn/vsvn/sinergis_apps
-
-
-
-2014-08-01T12:32:03.159125Z
-921
-samanta.biasiolli
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-5917e2d2-3217-4b41-b469-3cf702a23054
-
-java
-dir
-
-resources
-dir
-
