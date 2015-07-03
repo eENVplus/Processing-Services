@@ -1,0 +1,1 @@
+Inserire lo script dove c'è model.py negli script di ispra

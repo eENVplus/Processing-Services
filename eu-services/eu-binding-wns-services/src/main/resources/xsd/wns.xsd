@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wns="http://www.opengis.net/wns" targetNamespace="http://www.opengis.net/wns" elementFormDefault="qualified" attributeFormDefault="unqualified">
+   <!-- ==================== Includes and Imports ==================== -->
+   <xs:include schemaLocation="./wnsCommon.xsd"/>
+   <!-- ==================== R E Q U E S T S ==================== -->
+   <!--Register-->
+   <xs:element name="Register" type="wns:RegisterType"/>
+   <!--UpdateSingleUserRegistration-->
+   <xs:element name="UpdateSingleUserRegistration" type="wns:UpdateSingleUserRegistrationType"/>
+   <!--UpdateMultiUserRegistration-->
+   <xs:element name="UpdateMultiUserRegistration" type="wns:UpdateMultiUserRegistrationType"/>
+   <!--Unregister-->
+   <xs:element name="Unregister" type="wns:UnregisterType"/>
+   <!--DoNotification-->
+   <xs:element name="DoNotification" type="wns:DoNotificationType"/>
+   <!--GetMessage-->
+   <xs:element name="GetMessage" type="wns:GetMessageType"/>
+   <!-- ==================== R E S P O N S E S ==================== -->
+   <!--RegisterResponse-->
+   <xs:element name="RegisterResponse" type="wns:RegisterResponseType"/>
+   <!--UpdateSingleUserRegistrationResponse-->
+   <xs:element name="UpdateSingleUserRegistrationResponse" type="wns:UpdateSingleUserRegistrationResponseType"/>
+   <!--UpdateMultiUserRegistrationResponse-->
+   <xs:element name="UpdateMultiUserRegistrationResponse" type="wns:UpdateMultiUserRegistrationResponseType"/>
+   <!--UnregisterRespone-->
+   <xs:element name="UnregisterResponse" type="wns:UnregisterResponseType"/>
+   <!--DoNotificationResponse-->
+   <xs:element name="DoNotificationResponse" type="wns:DoNotificationResponseType"/>
+   <!--GetMessageResponse-->
+   <xs:element name="GetMessageResponse" type="wns:GetMessageResponseType"/>
+   <!-- ==================== T Y P E S ==================== -->
+   <!-- ==================== RequestTypes ==================== -->
+   <!--RegisterType-->
+   <xs:complexType name="RegisterType">
+      <xs:complexContent>
+         <xs:extension base="wns:BaseOperationType">
+            <xs:choice>
+               <xs:element name="SingleUser" type="wns:RegisterSingleUserType"/>
+               <xs:element name="MultiUser" type="wns:RegisterMultiUserType"/>
+            </xs:choice>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <!--RegisterSingleUserType-->
+   <xs:complexType name="RegisterSingleUserType">
+      <xs:sequence>
+         <xs:element name="Name" type="xs:string"/>
+         <xs:element name="CommunicationProtocol" type="wns:CommunicationProtocolType"/>
+      </xs:sequence>
+   </xs:complexType>
+   <!--RegisterMultipleUserType-->
+   <xs:complexType name="RegisterMultiUserType">
+      <xs:sequence>
+         <xs:element name="UserID" type="wns:UserIDType" minOccurs="2" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <!--UpdateSingleUserRegistrationType-->
+   <xs:complexType name="UpdateSingleUserRegistrationType">
+      <xs:complexContent>
+         <xs:extension base="wns:BaseOperationType">
+            <xs:sequence>
+               <xs:element name="UserID" type="wns:UserIDType"/>
+               <xs:element name="updateName" type="xs:token" minOccurs="0"/>
+               <xs:element name="addCommunicationProtocol" type="wns:CommunicationProtocolType" minOccurs="0"/>
+               <xs:element name="removeCommunicationProtocol" type="wns:CommunicationProtocolType" minOccurs="0"/>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <!--UpdateMultiUserRegistrationType-->
+   <xs:complexType name="UpdateMultiUserRegistrationType">
+      <xs:complexContent>
+         <xs:extension base="wns:BaseOperationType">
+            <xs:sequence>
+               <xs:element name="MultiUserID" type="wns:UserIDType"/>
+               <xs:element name="addUser" minOccurs="0">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="ID" type="wns:UserIDType" maxOccurs="unbounded"/>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+               <xs:element name="removeUser" minOccurs="0">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="ID" type="wns:UserIDType" maxOccurs="unbounded"/>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <!--UnregisterType-->
+   <xs:complexType name="UnregisterType">
+      <xs:complexContent>
+         <xs:extension base="wns:BaseOperationType">
+            <xs:sequence>
+               <xs:element name="ID" type="wns:UserIDType"/>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <!--DoNotificationType-->
+   <xs:complexType name="DoNotificationType">
+      <xs:complexContent>
+         <xs:extension base="wns:BaseOperationType">
+            <xs:sequence>
+               <xs:element name="UserID" type="wns:UserIDType"/>
+               <xs:element name="MaxTTLOfMessage" type="xs:duration" minOccurs="0"/>
+               <xs:element name="ShortMessage" type="xs:string"/>
+               <xs:element name="Message">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:any namespace="##any" processContents="lax"/>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <!--GetMessageType-->
+   <xs:complexType name="GetMessageType">
+      <xs:complexContent>
+         <xs:extension base="wns:BaseOperationType">
+            <xs:sequence>
+               <xs:element name="MessageID" type="xs:token">
+                  <xs:annotation>
+                     <xs:documentation>Provided by WNS</xs:documentation>
+                  </xs:annotation>
+               </xs:element>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <!-- ==================== ResponseTypes ==================== -->
+   <!--RegisterUserResponseType-->
+   <xs:complexType name="RegisterResponseType">
+      <xs:sequence>
+         <xs:element name="UserID" type="wns:UserIDType">
+            <xs:annotation>
+               <xs:documentation>unique user id, provided by the WNS</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <!--UpdateSingleUserRegistrationResponseType-->
+   <xs:complexType name="UpdateSingleUserRegistrationResponseType">
+      <xs:sequence>
+         <xs:element name="status">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:enumeration value="success"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <!--UpdateMultiUserRegistrationResponseType-->
+   <xs:complexType name="UpdateMultiUserRegistrationResponseType">
+      <xs:sequence>
+         <xs:element name="status">
+            <xs:annotation>
+               <xs:documentation>unkown MultiUserID if the ID to update is does not exist; unknown UpdateID if one or more of the IDs to add are unknown</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:enumeration value="success"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <!--UnregisterResponseType-->
+   <xs:complexType name="UnregisterResponseType">
+      <xs:sequence>
+         <xs:element name="status">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:enumeration value="success"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <!--DoNotificationResponseType-->
+   <xs:complexType name="DoNotificationResponseType">
+      <xs:sequence>
+         <xs:element name="status">
+            <xs:simpleType>
+               <xs:restriction base="xs:token">
+                  <xs:enumeration value="success"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <!--GetMessageResponseType-->
+   <xs:complexType name="GetMessageResponseType">
+      <xs:sequence>
+         <xs:element name="Message">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:any namespace="##any" processContents="lax"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

@@ -1,0 +1,31 @@
+<!-- edited with XMLSpy v2006 sp1 U (http://www.altova.com) by Ingo Simonis (Institute for Geoinformatics) -->
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by Institut für Geoinformatik (Institut für Geoinformatik) -->
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Institut für Geoinformatik (Institut für Geoinformatik) -->
+<xs:schema targetNamespace="http://www.opengis.net/wns" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opengis.net/wns" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="./wnsCommon.xsd"/>
+	<!--========================================================== 
+	ELEMENTS
+	 ==========================================================-->
+	<!--NotificationMessage-->
+	<xs:element name="NotificationMessage" type="NotificationMessageType"/>
+	<!--CommunicationRequestMessage-->
+	<xs:element name="CommunicationMessage" type="CommunicationMessageType"/>
+	<!--ReplyMessage-->
+	<xs:element name="ReplyMessage">
+		<xs:annotation>
+			<xs:documentation>Sent by the user directly to the callbackURL given in the CommunicationMessage</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="CorrID" type="xs:token"/>
+				<xs:element name="Payload">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:any processContents="skip"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>it.sinergis.ep02</groupId>
+	<artifactId>ep02-ws</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<name>ep02-ws</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<profiles>
+		<!-- Profilo relativo alla macchina locale -->
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<directory>${basedir}/config/dev</directory>
+						<includes>
+							<include>*.properties</include>
+						</includes>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<!-- Profilo relativo alla macchina di integrazione -->
+		<profile>
+			<id>test</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<directory>${basedir}/config/test</directory>
+						<includes>
+							<include>*.properties</include>
+						</includes>
+					</resource>
+				</resources>
+			</build>
+
+		</profile>
+	</profiles>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>it.sinergis</groupId>
+			<version>0.0.1-SNAPSHOT</version>
+			<artifactId>eu-wps-utils</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.geotools</groupId>
+					<artifactId>gt-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.geotools</groupId>
+					<artifactId>gt-main</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.geoserver.extension</groupId>
+					<artifactId>wps-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-httpclient</groupId>
+					<artifactId>commons-httpclient</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+</project>

@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script type="text/javascript">
+	function deleteControl() {
+		document.getElementById("deleteData").value = document.getElementById("deleteData").checked;
+	}
+</script>
+<title>Eenvplus - create GML</title>
+</head>
+<body>
+	<form id="uploadForm" method="post" enctype="multipart/form-data"
+		action="upload"
+		style="margin-left: 50px; border-style: solid; border-width: 1px; padding: 10px; width: 500px;">
+
+		<img src="img/logoEnv.png" /><br>
+		<p>
+			Region: <select id="regions" name="regions">
+				<option value="1">PIEMONTE</option>
+				<option value="2">VALLE D'AOSTA/VALLÉE D'AOSTE</option>
+				<option value="3">LOMBARDIA</option>
+				<option value="4">TRENTINO-ALTO ADIGE/SÜDTIROL</option>
+				<option value="5">VENETO</option>
+				<option value="6">FRIULI-VENEZIA GIULIA</option>
+				<option value="7">LIGURIA</option>
+				<option value="8">EMILIA-ROMAGNA</option>
+				<option value="9">TOSCANA</option>
+				<option value="10">UMBRIA</option>
+				<option value="11">MARCHE</option>
+				<option value="12">LAZIO</option>
+				<option value="13">ABRUZZO</option>
+				<option value="14">MOLISE</option>
+				<option value="15">CAMPANIA</option>
+				<option value="16">PUGLIA</option>
+				<option value="17">BASILICATA</option>
+				<option value="18">CALABRIA</option>
+				<option value="19">SICILIA</option>
+				<option value="20">SARDEGNA</option>
+				<option value="21">BOLZANO/BOZEN (PROVINCE)</option>
+				<option value="22">TRENTO (PROVINCE)</option>
+			</select>
+		</p>
+		<p>
+			Select a xsl file: <input type="file" name="fileXls"
+				id="fileXls" />
+		</p>
+		<p>
+			Select a shp file: <input type="file" name="fileShp" id="fileShp" />
+		</p>
+		<p>
+			<input type="submit" value="Create AqD GML" name="upload" id="upload" />
+		</p>
+	</form>
+</body>
+</html>

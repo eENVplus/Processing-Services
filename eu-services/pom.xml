@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>it.sinergis</groupId>
+	<artifactId>eu-services</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<!-- ORGANIZATION: organizzazione produttrice del progetto -->
+	<organization>
+		<name>Sinergis S.r.l.</name>
+		<url>http://www.sinergis.it/</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<id>samanta.biasiolli</id>
+			<name>Samanta Biasiolli</name>
+			<email>samanta.biasiolli@sinergis.it</email>
+			<!-- url>The URL for the homepage of the contributor</url -->
+			<organization>Sinergis</organization>
+			<organizationUrl>http://www.sinergis.it</organizationUrl>
+			<roles>
+				<role>Sinergis Referee</role>
+				<role>Programmer</role>
+			</roles>
+		</developer>
+	</developers>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<artifactId>eu-binding-wns-services</artifactId>
+			<groupId>it.sinergis</groupId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<modules>
+		<module>eu-binding-wns-services</module>
+		<module>eu-wns</module>
+		<module>eu-wps-utils</module>
+	</modules>
+</project>

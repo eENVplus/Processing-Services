@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>eu-binding-wns-services</artifactId>
+	<packaging>jar</packaging>
+
+	<!-- Project Information -->
+	<name>eu-wns</name>
+	<url>http://maven.apache.org</url>
+	<description>modulo che fa il binding con i servizi wns</description>
+
+	<parent>
+		<artifactId>eu-services</artifactId>
+		<groupId>it.sinergis</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>sps-v_1_0_0-schema</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- If we e.g. execute on JDK 1.7, we should compile for Java 7 to get 
+					the same (or higher) JAXB API version as used during the xjc execution. -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.6</source>
+						<target>1.6</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<schemaDirectory>${project.basedir}/src/main/resources/xsd</schemaDirectory>
+					<schemaFiles> wns.xsd, wnsShared.xsd</schemaFiles>
+					<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+					<packageName>it.sinergis.wns.jaxb</packageName>
+					<bindingFiles>wns.xjb</bindingFiles>
+					<bindingDirectory>${project.basedir}/src/main/resources/xjb</bindingDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
