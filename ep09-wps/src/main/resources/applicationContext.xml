@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="createReclassificationTable" class="it.sinergis.ep09.landslide.wps.CreateReclassificationTable">
+    	<constructor-arg index="0" ref="catalog" />
+	</bean>
+	
+	<bean id="computeLandslideSusceptibilityMap" class="it.sinergis.ep09.landslide.wps.ComputeLandslideSusceptibilityMap">
+    	<constructor-arg index="0" ref="catalog" />
+	</bean>
+	
+	<bean id="landslideValidation" class="it.sinergis.ep09.landslide.wps.LandslideValidation">
+    	<constructor-arg index="0" ref="catalog" />
+	</bean>
+	
+	<bean id="storeSusceptibilityMap" class="it.sinergis.ep09.landslide.wps.StoreSusceptibilityMap">
+    	<constructor-arg index="0" ref="catalog" />
+	</bean>
+	
+	<bean id="computeFloodProneBaseMap" class="it.sinergis.ep09.flooding.wps.ComputeFloodProneBaseMap">
+    	<constructor-arg index="0" ref="catalog" />
+	</bean>
+	
+	<bean id="computeTopographicIndexMap" class="it.sinergis.ep09.flooding.wps.ComputeTopographicIndexMap">
+    	<constructor-arg index="0" ref="catalog" />
+	</bean>
+	
+	<bean id="computeFinalFloodProbabilityMap" class="it.sinergis.ep09.flooding.wps.ComputeFinalFloodProbabilityMap">
+    	<constructor-arg index="0" ref="catalog" />
+	</bean>
+	
+	<bean id="rasterToVectorGdal" class="it.sinergis.ep09.landslide.wps.RasterToVectorGdal">
+    	<constructor-arg index="0" ref="catalog" />
+	</bean>
+</beans>

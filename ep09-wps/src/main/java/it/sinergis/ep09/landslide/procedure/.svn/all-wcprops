@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/vsvn/sinergis_apps/!svn/ver/900/eenvplus/trunk/EP_09/ep09-wps/src/main/java/it/sinergis/ep09/landslide/procedure
+END
+GeologyProcedure.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/vsvn/sinergis_apps/!svn/ver/874/eenvplus/trunk/EP_09/ep09-wps/src/main/java/it/sinergis/ep09/landslide/procedure/GeologyProcedure.java
+END
+LandCoverProcedure.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/vsvn/sinergis_apps/!svn/ver/861/eenvplus/trunk/EP_09/ep09-wps/src/main/java/it/sinergis/ep09/landslide/procedure/LandCoverProcedure.java
+END
+DemProcedure.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/vsvn/sinergis_apps/!svn/ver/985/eenvplus/trunk/EP_09/ep09-wps/src/main/java/it/sinergis/ep09/landslide/procedure/DemProcedure.java
+END
+Procedure.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/vsvn/sinergis_apps/!svn/ver/875/eenvplus/trunk/EP_09/ep09-wps/src/main/java/it/sinergis/ep09/landslide/procedure/Procedure.java
+END

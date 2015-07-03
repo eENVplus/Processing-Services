@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wps:Execute version="1.0.0" service="WPS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.opengis.net/wps/1.0.0" xmlns:wfs="http://www.opengis.net/wfs" xmlns:wps="http://www.opengis.net/wps/1.0.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc" xmlns:wcs="http://www.opengis.net/wcs/1.1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.opengis.net/wps/1.0.0 http://schemas.opengis.net/wps/1.0.0/wpsAll.xsd">
+  <ows:Identifier>eep:LandslideValidation</ows:Identifier>
+  <wps:DataInputs>
+    <wps:Input>
+      <ows:Identifier>susceptibilityMap</ows:Identifier>
+      <wps:Reference mimeType="image/tiff" xlink:href="http://geoserver/wcs" method="POST">
+        <wps:Body>
+          <wcs:GetCoverage service="WCS" version="1.1.1">
+            <ows:Identifier>tmp:landslide_1432119397580</ows:Identifier>
+            <wcs:DomainSubset>
+              <gml:BoundingBox crs="http://www.opengis.net/gml/srs/epsg.xml#4326">
+                <ows:LowerCorner>12.201722546506453 45.38264319659691</ows:LowerCorner>
+                <ows:UpperCorner>14.110055067400037 46.86964672030033</ows:UpperCorner>
+              </gml:BoundingBox>
+            </wcs:DomainSubset>
+            <wcs:Output format="image/tiff"/>
+          </wcs:GetCoverage>
+        </wps:Body>
+      </wps:Reference>
+    </wps:Input>
+     <wps:Input>
+       <ows:Identifier>validationSet</ows:Identifier>
+      <wps:Reference mimeType="text/xml" xlink:href="http://sgi2.isprambiente.it/geoserver/eenvplus/ows" method="POST">
+        <wps:Body>
+          <![CDATA[<wfs:GetFeature service="WFS" version="1.0.0" outputFormat="GML2" xmlns:eenvplus="http://sgi.isprambiente.it/eenvplus" xmlns:wfs="http://www.opengis.net/wfs" 
+  xmlns:ogc="http://www.opengis.net/ogc" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.opengis.net/wfs
+                      http://schemas.opengis.net/wfs/1.0.0/WFS-basic.xsd">
+            <wfs:Query typeName="eenvplus:Frane_FVG"/>
+          </wfs:GetFeature>]]>
+        </wps:Body>
+      </wps:Reference>
+     </wps:Input>
+   </wps:DataInputs>
+   <wps:ResponseForm>
+     <wps:RawDataOutput mimeType="text/xml; subtype=wfs-collection/1.0">
+       <ows:Identifier>result</ows:Identifier>
+     </wps:RawDataOutput>
+   </wps:ResponseForm>
+</wps:Execute>
