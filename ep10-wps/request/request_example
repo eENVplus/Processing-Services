@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wps:Execute version="1.0.0" service="WPS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.opengis.net/wps/1.0.0" xmlns:wfs="http://www.opengis.net/wfs" xmlns:wps="http://www.opengis.net/wps/1.0.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc" xmlns:wcs="http://www.opengis.net/wcs/1.1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.opengis.net/wps/1.0.0 http://schemas.opengis.net/wps/1.0.0/wpsAll.xsd">
+  <ows:Identifier>eep:UrbanRuralGrowthIdentification</ows:Identifier>
+  <wps:DataInputs>
+    <wps:Input>
+      <ows:Identifier>firstYearFeatures</ows:Identifier>
+      <wps:Reference mimeType="text/xml" xlink:href="http://geoserver/wfs" method="POST">
+        <wps:Body>
+          <wfs:GetFeature service="WFS" version="1.0.0" outputFormat="GML2" xmlns:sinergis="www.sinergis.it">
+            <wfs:Query typeName="sinergis:clc90"/>
+          </wfs:GetFeature>
+        </wps:Body>
+      </wps:Reference>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>secondYearFeatures</ows:Identifier>
+      <wps:Reference mimeType="text/xml" xlink:href="http://geoserver/wfs" method="POST">
+        <wps:Body>
+          <wfs:GetFeature service="WFS" version="1.0.0" outputFormat="GML2" xmlns:sinergis="www.sinergis.it">
+            <wfs:Query typeName="sinergis:clc2000"/>
+          </wfs:GetFeature>
+        </wps:Body>
+      </wps:Reference>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>restrictedArea</ows:Identifier>
+      <wps:Data>
+        <wps:ComplexData mimeType="application/wkt"><![CDATA[POLYGON((616593.15583078 5079024.47057621, 618446.35907446 5080351.76479127, 618446.35907446 5080351.76479127, 619823.73986368 5079199.77358575, 619473.1338446 5076870.74788761, 616593.15583078 5076970.92103592, 616593.15583078 5079024.47057621))]]></wps:ComplexData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>clcfield1</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>CODE_90</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>clcfield2</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>CODE_00</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>areafield1</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>AREA</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>areafield2</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>AREA</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>aggregationLevel</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>3</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>changeDetectionStyle</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>SLD_ep10_2</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+  </wps:DataInputs>
+  <wps:ResponseForm>
+    <wps:RawDataOutput>
+      <ows:Identifier>result</ows:Identifier>
+    </wps:RawDataOutput>
+  </wps:ResponseForm>
+</wps:Execute>
