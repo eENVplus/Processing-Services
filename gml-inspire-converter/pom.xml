@@ -1,0 +1,103 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>it.sinergis</groupId>
+    <artifactId>eEnvPlusWps</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>gml-inspire-converter</artifactId>
+  <name>gml-inspire-converter</name>
+  <description>converter gml into gml inspire compliant</description>
+  
+  	<profiles>
+		<!-- Profilo relativo alla macchina locale -->
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<includes>
+							<include>applicationContext.xml</include>
+							<include>messages_converter.properties</include>
+							<include>*.xsl</include>
+						</includes>
+					</resource>
+					<resource>
+						<directory>${basedir}/config/dev</directory>
+						<includes>
+							<include>*.properties</include>
+						</includes>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<!-- Profilo relativo alla macchina di integrazione -->
+		<profile>
+			<id>test</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<includes>
+							<include>applicationContext.xml</include>
+							<include>messages_converter.properties</include>
+							<include>*.xsl</include>
+						</includes>
+					</resource>
+					<resource>
+						<directory>${basedir}/config/test</directory>
+						<includes>
+							<include>*.properties</include>
+						</includes>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+	</profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+						<manifestEntries>
+							<Implementation-Vendor>SINERGIS s.r.l.</Implementation-Vendor>
+							<Implementation-Vendor-URL>http://www.sinergis.it/</Implementation-Vendor-URL>
+							<Jdk-Vendor>${java.vendor}</Jdk-Vendor>
+							<Jdk-Vendor-URL>${java.vendor.url}</Jdk-Vendor-URL>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+  
+  <dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>it.sinergis</groupId>
+			<version>0.0.1-SNAPSHOT</version>
+			<artifactId>eu-wps-utils</artifactId>
+		</dependency>
+	</dependencies>
+</project>
